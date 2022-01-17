@@ -15,4 +15,4 @@ jobs:
       - task: hello-world
         file: resource-tutorial/tasks/task_hello_world.yml
         params:
-          GREETING: "Hello Pipeline!"
+          GREETING: "((message))"
