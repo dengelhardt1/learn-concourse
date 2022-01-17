@@ -21,4 +21,4 @@ jobs:
         file: resource-tutorial/tasks/task_create_output.yml
       - task: show-output-file
         image: image-resource-((image-resource))
-        file: resource-tutorial/tasks/task_show-output.yml
+        file: resource-tutorial/tasks/task_show_output.yml
