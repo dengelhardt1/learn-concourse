@@ -5,7 +5,7 @@ resources:
     source:
       uri: ((github-resource-tutorial))
       branch: ((branch-resource-tutorial))
-  - name: image-resource
+  - name: image-resource-((image-resource))
     type: docker-image
     source: {repository: ((image-resource))}
 
