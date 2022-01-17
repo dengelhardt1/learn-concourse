@@ -13,11 +13,11 @@ jobs:
   - name: job-hello-world
     public: true
     plan:
-      - get: image-resource
+      - get: image-resource-((image-resource))
       - get: resource-tutorial
         trigger: true
       - task: hello-world
-        image: ((image-resource))
+        image: image-resource-((image-resource))
         file: resource-tutorial/tasks/task_hello_world.yml
         params:
           GREETING: "Hello Pipeline"
