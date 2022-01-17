@@ -8,7 +8,7 @@ resources:
 
   - name: image-resource
     type: docker-image
-    source: {repository: ((image-resource-tutorial))}
+    source: {repository: ((image-resource))}
 
 jobs:
   - name: job-hello-world
@@ -18,6 +18,7 @@ jobs:
       - get: resource-tutorial
         trigger: true
       - task: hello-world
+        image: ((image-resource))
         file: resource-tutorial/tasks/task_hello_world.yml
         params:
           GREETING: "((message))"
