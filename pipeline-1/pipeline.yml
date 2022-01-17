@@ -6,6 +6,10 @@ resources:
       uri: ((github-resource-tutorial))
       branch: ((branch-resource-tutorial))
 
+  - name: busy-box
+    type: docker-image
+    source: {repository: ((image-resource-tutorial))}
+
 jobs:
   - name: job-hello-world
     public: true
