@@ -1,0 +1,24 @@
+---
+resources:
+  - name: resource-tutorial
+    type: git
+    source:
+      uri: ((github-resource-tutorial))
+      branch: ((branch-resource-tutorial))
+  - name: image-resource-((image-resource))
+    type: docker-image
+    source: {repository: ((image-resource))}
+
+jobs:
+  - name: job-hello-world
+    public: true
+    plan:
+      - get: image-resource-((image-resource))
+      - get: resource-tutorial
+        trigger: true
+      - task: create-output-file
+        image: image-resource-((image-resource))
+        file: resource-tutorial/tasks/task_create_output.yml
+      - task: show-output-file
+        image: image-resource-((image-resource))
+        file: resource-tutorial/tasks/task_show-output.yml
