@@ -1,3 +1,3 @@
 #!/bin/sh
-
-echo $(uname) > /outputs/unname.txt
+mkdir outputs
+echo $(uname) > outputs/unname.txt
