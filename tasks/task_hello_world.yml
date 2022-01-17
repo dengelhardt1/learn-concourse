@@ -9,5 +9,5 @@ params:
   GREETING: 
 
 run:
-  path: echo
-  args: [((GREETING))]
+  path: resource-tutorial/scripts/script_hello.sh
+
