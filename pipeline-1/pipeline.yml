@@ -6,7 +6,7 @@ resources:
       uri: ((github-resource-tutorial))
       branch: ((branch-resource-tutorial))
 
-  - name: busy-box
+  - name: image-resource
     type: docker-image
     source: {repository: ((image-resource-tutorial))}
 
@@ -14,6 +14,7 @@ jobs:
   - name: job-hello-world
     public: true
     plan:
+      -get: image-resource
       - get: resource-tutorial
         trigger: true
       - task: hello-world
