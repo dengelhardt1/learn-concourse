@@ -10,7 +10,7 @@ resources:
     source: {repository: ((image-resource))}
 
 jobs:
-  - name: job-hello-world
+  - name: show-some-files
     public: true
     plan:
       - get: image-resource
