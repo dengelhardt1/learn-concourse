@@ -1,10 +1,15 @@
 ---
 resources:
   - name: resource-tutorial
-    type: git
+    type: s3
     source:
-      uri: ((github-resource-tutorial))
-      branch: ((branch-resource-tutorial))
+    bucket: ((s3-bucket))
+    regexp: directory_on_s3/release-(.*).tgz
+    access_key_id: ((s3-access-key))
+    secret_access_key: ((s3-access-secret))
+    endpoint: ((s3-endpoint))
+    cloudfront_url: ((s3-endpoint))
+  
   - name: image-resource
     type: docker-image
     source: {repository: ((image-resource))}
@@ -19,6 +24,7 @@ jobs:
       - task: create-output-file
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
+     
       - task: show-output-file
         image: image-resource
-        file: resource-tutorial/tasks/task_show_output.yml
+        file: resource-tutorial/tasks/s3_tasks/task_show_output.yml
