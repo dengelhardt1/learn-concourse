@@ -70,6 +70,16 @@ jobs:
       - get: resource-s3
         passed: [create-file-put-on-s3-bucket]
         trigger: true
+      - task: show-files
+        image: image-resource
+        config:
+          platform: linux
+          inputs: 
+            - name: resource-s3
+           # - name: outputs 
+          run:
+            path: ls
+            args: ["-alR"]  
       - task: read-file-from-s3-bucket
         image: image-resource
         file: resource-tutorial/tasks/task_show_output_s3.yml
