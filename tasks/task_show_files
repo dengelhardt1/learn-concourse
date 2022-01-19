@@ -1,0 +1,9 @@
+      - task: show-files
+        image: image-resource
+        config:
+          platform: linux
+          inputs: 
+            - name: resource-s3
+          run:
+            path: ls
+            args: ["-alR"] 
