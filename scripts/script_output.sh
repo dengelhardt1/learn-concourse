@@ -1,4 +1,4 @@
 #!/bin/sh
 #mkdir outputs
-touch outputs/unname.txt
-echo $(uname -a) > outputs/unname.txt
+touch outputs/uname.txt
+echo $(uname -a) > outputs/uname.txt

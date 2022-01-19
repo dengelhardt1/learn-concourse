@@ -1,14 +1,19 @@
 ---
 resources:
   - name: resource-tutorial
+    type: git
+    source:
+      uri: ((github-resource-tutorial))
+      branch: ((branch-resource-tutorial))
+
+  - name: resource-s3
     type: s3
     source:
       bucket: ((s3-bucket))
-      regexp: tasks/task_hello(.*).yml
+      regexp: (.*).txt
       access_key_id: ((s3-access-key))
       secret_access_key: ((s3-access-secret))
       endpoint: ((s3-endpoint))
-      #cloudfront_url: ((s3-endpoint))
       disable_ssl: true
       use_v4: true
   
@@ -17,34 +22,42 @@ resources:
     source: {repository: ((image-resource))}
 
 jobs:
-  - name: s3-bucket
+  - name: create-file-put-on-s3-bucket
     public: true
     plan:
       - get: image-resource
-      - get: resource-tutorial          
+      - get: resource-tutorial
+      - get: resource-s3        
+      - task: create-output-file
+        image: image-resource
+        file: resource-tutorial/tasks/task_create_output.yml
       - task: show-files
-        config:    
+        image: image-resource
+        config:
           platform: linux
-          image_resource:
-          #  type: docker-image
-            source: {image: image-resource } #{repository: busybox}
-          inputs:
-          - name: resource-tutorial
+          inputs: 
+          #  - name: resource-s3
+            - name: outputs 
           run:
-            args:
-            - -alR
-            path: ls 
+            path: ls
+            args: ["-alR"]         
+      - put: resource-s3
+        params:
+          #resource: outputs
+          file: /outputs/uname.txt
+          acl: public-read
     
-    #  - task: hello-world
-    #    image: image-resource
-    #    file: resource-tutorial/task_hello_world.yml
-    #    params:
-    #      GREETING: "((message))"
-        #trigger: true
-    #  - task: create-output-file
-    #    image: image-resource
-    #    file: /my-bucket/tasks//task_create_output.yml
-     
+      - task: show-files
+        image: image-resource
+        config:
+          platform: linux
+          inputs: 
+            - name: resource-s3
+           # - name: outputs 
+          run:
+            path: ls
+            args: ["-alR"]             
     #  - task: show-output-file
-     #   image: image-resource
-      #  file: /my-bucket/tasks/task_show_output.yml
+    #    image: image-resource
+    #    file: resource-tutorial/tasks/task_show_output.yml         
+     
