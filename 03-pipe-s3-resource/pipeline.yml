@@ -35,6 +35,7 @@ jobs:
       - put: resource-s3
         params:
           file: /outputs/time.txt
+          file: /outputs/uname.txt
           acl: public-read             
   - name: read-file-from-s3-bucket
     public: true
