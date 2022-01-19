@@ -24,6 +24,7 @@ resources:
 jobs:
   - name: create-file-put-on-s3-bucket
     public: true
+    serial: true
     plan:
       - get: image-resource
       - get: resource-tutorial
@@ -60,13 +61,15 @@ jobs:
     #  - task: show-output-file
     #    image: image-resource
     #    file: resource-tutorial/tasks/task_show_output.yml
-  jobs:
-    - name: read-file-form-s3-bucket
-      public: true
-      plan:
-        - get: image-resource
-        - get: resource-tutorial
-        - get: resource-s3
-        - task: read-file-from-s3-bucket
-          image: image-resource
-          file: resource-tutorial/tasks/task_show_output_s3.yml
+
+  - name: read-file-form-s3-bucket
+    public: true
+    plan:
+      - get: image-resource
+      - get: resource-tutorial
+      - get: resource-s3
+        passed: [create-file-put-on-s3-bucket]
+        trigger: true
+      - task: read-file-from-s3-bucket
+        image: image-resource
+        file: resource-tutorial/tasks/task_show_output_s3.yml

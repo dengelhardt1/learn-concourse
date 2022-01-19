@@ -5,4 +5,4 @@ inputs:
   - name: resource-s3
 
 run:
-  path: resource-tutorial/scripts/script_show_output.sh
+  path: resource-tutorial/scripts/script_show_output_s3.sh
