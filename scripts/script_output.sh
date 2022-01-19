@@ -1,4 +1,3 @@
 #!/bin/sh
-#mkdir outputs
-touch outputs/uname.txt
-echo $(uname -a) > outputs/uname.txt
+touch outputs/time.txt
+echo $(date -u +"%FT-%H:%M") > outputs/time.txt

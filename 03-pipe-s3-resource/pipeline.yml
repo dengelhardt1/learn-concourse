@@ -34,7 +34,7 @@ jobs:
         file: resource-tutorial/tasks/task_create_output.yml       
       - put: resource-s3
         params:
-          file: /outputs/uname.txt
+          file: /outputs/time.txt
           acl: public-read             
   - name: read-file-from-s3-bucket
     public: true

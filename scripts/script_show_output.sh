@@ -1,4 +1,4 @@
 #!/bin/sh
 
 ls -la outputs
-cat outputs/uname.txt
+cat outputs/time.txt
