@@ -1,0 +1,8 @@
+---
+platform: linux
+
+inputs:
+  - name: resource-s3
+
+run:
+  path: resource-tutorial/scripts/script_show_output.sh

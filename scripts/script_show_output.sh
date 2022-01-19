@@ -1,4 +1,4 @@
 #!/bin/sh
 
 ls -la outputs
-cat outputs/unname.txt
+cat outputs/uname.txt
