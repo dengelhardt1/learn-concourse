@@ -60,7 +60,7 @@ jobs:
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
         params:
-          COMMAND: "$(uname -a)"
+          COMMAND: "uname -a"
           FILENAME: "uname"
       - put: resource-s3-file-1
         params:
@@ -78,7 +78,7 @@ jobs:
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
         params:
-          COMMAND: "$(date)"
+          COMMAND: "date"
           FILENAME: "date"
       - put: resource-s3-file-2
         params:
@@ -127,8 +127,10 @@ jobs:
         trigger: true 
       - task: read-file-from-s3-bucket
         image: image-resource
-        params:
+        vars:
           RESOURCE: "resource-s3-file-2"
+        params:
+          FILEINPUT: "resource-s3-file-2"
         file: resource-tutorial/tasks/task_show_output_s3.yml
     on_success:
       put: notify
