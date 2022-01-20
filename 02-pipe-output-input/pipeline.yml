@@ -18,7 +18,15 @@ jobs:
       #  trigger: true
       - task: create-output-file
         image: image-resource
-        file: resource-tutorial/tasks/task_create_output_uname.yml
+        file: resource-tutorial/tasks/task_create_output.yml
+        params:
+          COMMAND: "((command-1))" # get credentials from credentials-file
+          FILENAME: "((filename-1))" # get credentials from credentials-file
       - task: show-output-file
         image: image-resource
+        params:
+          PATHINPUT: "outputs"
+          FILEINPUT: "filename-1"
+        vars:
+          RESOURCE: "outputs"
         file: resource-tutorial/tasks/task_show_output.yml

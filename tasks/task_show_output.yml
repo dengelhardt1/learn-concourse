@@ -1,9 +1,13 @@
 ---
 platform: linux
 
+params:
+  PATHINPUT:
+  FILEINPUT:
+
 inputs:
   - name: resource-tutorial
-  - name: outputs 
+  - name: ((RESOURCE))
 
 run:
   path: resource-tutorial/scripts/script_show_output.sh
