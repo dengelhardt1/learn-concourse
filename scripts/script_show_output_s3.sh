@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ls -laR ${FILEINPUT}
-cat ${FILEINPUT}/*.txt
+ls -laR ${PATHINPUT}
+cat ${PATHINPUT}/${FILEINPUT}*.txt

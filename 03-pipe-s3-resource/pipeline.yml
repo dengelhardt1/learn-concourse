@@ -98,7 +98,8 @@ jobs:
         vars:
           RESOURCE: "resource-s3-file-1"
         params:
-          FILEINPUT: "resource-s3-file-1"
+          PATHINPUT: "resource-s3-file-1"
+          FILEINPUT: "((filename-1))" # get credentials from credentials-file
         file: resource-tutorial/tasks/task_show_output_s3.yml
     on_success:
       put: notify
@@ -130,7 +131,8 @@ jobs:
         vars:
           RESOURCE: "resource-s3-file-2"
         params:
-          FILEINPUT: "resource-s3-file-2"
+          FILEINPUT: "((filename-2))" # get credentials from credentials-file
+          PATHINPUT: "resource-s3-file-2"
         file: resource-tutorial/tasks/task_show_output_s3.yml
     on_success:
       put: notify
