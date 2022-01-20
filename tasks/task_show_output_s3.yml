@@ -6,7 +6,7 @@ params:
 
 inputs:
   - name: resource-tutorial
-  - name: ((RESOURCE))
+  - name: ((FILEINPUT))
 
 run:
   path: resource-tutorial/scripts/script_show_output_s3.sh
