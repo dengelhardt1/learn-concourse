@@ -95,8 +95,10 @@ jobs:
         trigger: true 
       - task: read-file-from-s3-bucket
         image: image-resource
-        params:
+        vars:
           RESOURCE: "resource-s3-file-1"
+        params:
+          SCRIPT-RESOURCE: "resource-s3-file-1"
         file: resource-tutorial/tasks/task_show_output_s3.yml
     on_success:
       put: notify

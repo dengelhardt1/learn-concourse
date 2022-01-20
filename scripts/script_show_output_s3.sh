@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ls -laR resource-s3
-cat resource-s3/*.txt
+ls -laR ${SCRIPT-RESOURCE}
+cat ${SCRIPT-RESOURCE}/*.txt
