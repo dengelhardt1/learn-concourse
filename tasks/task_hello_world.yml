@@ -8,4 +8,4 @@ params:
   GREETING: 
 
 run:
-  path: resource-tutorial/script_hello.sh
+  path: resource-tutorial/scripts/script_hello.sh
