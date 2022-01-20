@@ -65,16 +65,16 @@ jobs:
     on_success:
       put: notify
       params:
-        text: "Congratulations! pipeline: $BUILD_PIPELINE_NAME > job successed! "
+        text: "Congratulations! pipeline: $BUILD_PIPELINE_NAME > Job: $BUILD_JOB_NAME successed! "
     on_failure:
       put: notify
       params:
-        text: "Alert! pipeline: $BUILD_PIPELINE_NAME > Job failed! "
+        text: "Alert! pipeline: $BUILD_PIPELINE_NAME > Job: $BUILD_JOB_NAME failed! "
     on_error:
       put: notify
       params:
-        text: "Alert! pipeline: $BUILD_PIPELINE_NAME > Job got an error!" 
+        text: "Alert! pipeline: $BUILD_PIPELINE_NAME > Job: $BUILD_JOB_NAME got an error!" 
     on_abort:
       put: notify
       params:
-        text: "Abort! pipeline: $BUILD_PIPELINE_NAME > Job aborted! " 
+        text: "Abort! pipeline: $BUILD_PIPELINE_NAME > Job: $BUILD_JOB_NAME aborted! " 
