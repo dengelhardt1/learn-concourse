@@ -100,7 +100,7 @@ jobs:
         params:
           PATHINPUT: "resource-s3-file-1"
           FILEINPUT: "((filename-1))" # get credentials from credentials-file
-        file: resource-tutorial/tasks/task_show_output_s3.yml
+        file: resource-tutorial/tasks/task_show_output.yml
     on_success:
       put: notify
       params:
@@ -133,7 +133,7 @@ jobs:
         params:
           FILEINPUT: "((filename-2))" # get credentials from credentials-file
           PATHINPUT: "resource-s3-file-2"
-        file: resource-tutorial/tasks/task_show_output_s3.yml
+        file: resource-tutorial/tasks/task_show_output.yml
     on_success:
       put: notify
       params:

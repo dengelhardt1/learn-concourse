@@ -26,7 +26,7 @@ jobs:
         image: image-resource
         params:
           PATHINPUT: "outputs"
-          FILEINPUT: "filename-1"
+          FILEINPUT: "((filename-1))"
         vars:
           RESOURCE: "outputs"
         file: resource-tutorial/tasks/task_show_output.yml
