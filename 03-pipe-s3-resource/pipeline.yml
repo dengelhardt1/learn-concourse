@@ -1,13 +1,21 @@
 ---
+resource_types:
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+
 resources:
   - name: resource-tutorial
     type: git
+    icon: github
     source:
       uri: ((github-resource-tutorial))
       branch: ((branch-resource-tutorial))
 
   - name: resource-s3
     type: s3
+    icon: database
     source:
       bucket: ((s3-bucket))
       regexp: uname-(.*).txt
@@ -19,7 +27,13 @@ resources:
   
   - name: image-resource
     type: docker-image
+    icon: docker
     source: {repository: ((image-resource))}
+
+  - name: notify
+    type: slack-notification
+    source:
+      url: ((slack-webhook))
 
 jobs:
   - name: create-file-put-on-s3-bucket
@@ -35,7 +49,8 @@ jobs:
       - put: resource-s3
         params:
           file: /outputs/uname-*.txt
-          acl: public-read             
+          acl: public-read 
+
   - name: read-file-from-s3-bucket
     public: true
     plan:
@@ -47,3 +62,11 @@ jobs:
       - task: read-file-from-s3-bucket
         image: image-resource
         file: resource-tutorial/tasks/task_show_output_s3.yml
+    on_success:
+      put: notify
+      params:
+        text: "Congratulations, every thing worked!"
+    on_failure:
+      put: notify
+      params:
+        text: " Alert ! Something went worng "
