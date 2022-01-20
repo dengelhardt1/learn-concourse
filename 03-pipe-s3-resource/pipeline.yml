@@ -55,16 +55,17 @@ jobs:
     plan:
       - get: image-resource
       - get: resource-tutorial
-      - get: resource-s3-file-1        
+      - get: resource-s3-file-1
+        trigger: true        
       - task: create-output-file
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
         params:
-          COMMAND: "uname -a"
-          FILENAME: "uname"
+          COMMAND: "((command-1))"
+          FILENAME: "((filename-1))"
       - put: resource-s3-file-1
         params:
-          file: /outputs/uname-*.txt
+          file: /outputs/((filename-1))-*.txt
           acl: public-read
 
   - name: create-file-2-put-on-s3-bucket
@@ -73,16 +74,17 @@ jobs:
     plan:
       - get: image-resource
       - get: resource-tutorial
-      - get: resource-s3-file-2        
+      - get: resource-s3-file-2
+        trigger: true        
       - task: create-output-file
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
         params:
-          COMMAND: "date"
-          FILENAME: "date"
+          COMMAND: "((command-2))"
+          FILENAME: "((filename-2))"
       - put: resource-s3-file-2
         params:
-          file: /outputs/date-*.txt
+          file: /outputs/((filename-2))-*.txt
           acl: public-read
 
   - name: read-file-1-from-s3-bucket
