@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ls -laR ${SCRIPT-RESOURCE}
-cat ${SCRIPT-RESOURCE}/*.txt
+ls -laR ${RESOURCE}
+cat ${RESOURCE}/*.txt
