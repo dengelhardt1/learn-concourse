@@ -1,5 +1,5 @@
 ---
-#platform: linux
+platform: linux
 
 inputs:
   - name: resource-tutorial
