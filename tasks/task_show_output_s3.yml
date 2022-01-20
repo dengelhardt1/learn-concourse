@@ -2,8 +2,8 @@
 platform: linux
 
 params:
-  SCRIPT-RESOURCE:
-  
+  FILEINPUT:
+
 inputs:
   - name: resource-tutorial
   - name: ((RESOURCE))

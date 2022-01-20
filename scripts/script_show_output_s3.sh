@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ls -laR ${RESOURCE}
-cat ${RESOURCE}/*.txt
+ls -laR ${FILEINPUT}
+cat ${FILEINPUT}/*.txt
