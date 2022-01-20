@@ -6,6 +6,10 @@ inputs:
 
 outputs:
   - name: outputs
+
+params:
+  COMMAND:
+  FILENAME:
  
 run:
-  path: resource-tutorial/scripts/script_output.sh
+  path: resource-tutorial/scripts/script_create_output.sh

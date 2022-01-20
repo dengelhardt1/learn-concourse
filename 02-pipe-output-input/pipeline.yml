@@ -18,7 +18,7 @@ jobs:
       #  trigger: true
       - task: create-output-file
         image: image-resource
-        file: resource-tutorial/tasks/task_create_output.yml
+        file: resource-tutorial/tasks/task_create_output_uname.yml
       - task: show-output-file
         image: image-resource
         file: resource-tutorial/tasks/task_show_output.yml
