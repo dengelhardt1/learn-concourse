@@ -55,8 +55,7 @@ jobs:
     plan:
       - get: image-resource
       - get: resource-tutorial
-      - get: resource-s3-file-1
-        #trigger: true # never give up     
+        #trigger: true    
       - task: create-output-file
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
@@ -74,8 +73,7 @@ jobs:
     plan:
       - get: image-resource
       - get: resource-tutorial
-      - get: resource-s3-file-2
-        #trigger: true # never give up        
+        #trigger: true     
       - task: create-output-file
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
