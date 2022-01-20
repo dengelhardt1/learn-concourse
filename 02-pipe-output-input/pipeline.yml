@@ -15,7 +15,7 @@ jobs:
     plan:
       - get: image-resource
       - get: resource-tutorial
-        trigger: true
+      #  trigger: true
       - task: create-output-file
         image: image-resource
         file: resource-tutorial/tasks/task_create_output.yml
