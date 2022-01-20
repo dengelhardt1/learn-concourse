@@ -18,7 +18,7 @@ resources:
     icon: database
     source:
       bucket: ((s3-bucket-1))
-      regexp: uname-(.*).txt
+      regexp: (.*).txt
       access_key_id: ((s3-access-key))
       secret_access_key: ((s3-access-secret))
       endpoint: ((s3-endpoint))
@@ -30,7 +30,7 @@ resources:
     icon: database
     source:
       bucket: ((s3-bucket-2))
-      regexp: date-(.*).txt
+      regexp: (.*).txt
       access_key_id: ((s3-access-key))
       secret_access_key: ((s3-access-secret))
       endpoint: ((s3-endpoint))
@@ -95,6 +95,8 @@ jobs:
         trigger: true 
       - task: read-file-from-s3-bucket
         image: image-resource
+        params:
+          RESOURCE: "resource-s3-file-1"
         file: resource-tutorial/tasks/task_show_output_s3.yml
     on_success:
       put: notify
@@ -123,6 +125,8 @@ jobs:
         trigger: true 
       - task: read-file-from-s3-bucket
         image: image-resource
+        params:
+          RESOURCE: "resource-s3-file-2"
         file: resource-tutorial/tasks/task_show_output_s3.yml
     on_success:
       put: notify
