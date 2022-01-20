@@ -1,6 +1,9 @@
 ---
 platform: linux
 
+params:
+  RESOURCE:
+
 inputs:
   - name: resource-tutorial
   - name: ((RESOURCE))
