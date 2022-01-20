@@ -1,0 +1,10 @@
+---
+#platform: linux
+
+#inputs:
+#  - name: resource-tutorial
+#  - name: outputs 
+
+put: notify
+      params:
+        text: "Congratulations, every thing worked!"
