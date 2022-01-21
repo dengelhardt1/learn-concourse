@@ -31,4 +31,4 @@ jobs:
     - get: resource-tutorial
     - put: concourse-kubectl-resource
       params:
-        file: resource-tutorial/k8s-files/nginx.yaml
+        file: ((kubernetes-files))
