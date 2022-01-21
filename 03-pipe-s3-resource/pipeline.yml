@@ -18,7 +18,7 @@ resources:
     icon: database
     source:
       bucket: ((s3-bucket-1))  # get credentials from credentials-file
-      regexp: (.*).txt
+      regexp: ((filename-1))-(.*).txt
       access_key_id: ((s3-access-key)) # get credentials from vault
       secret_access_key: ((s3-access-secret)) # get credentials from vault
       endpoint: ((s3-endpoint)) # get credentials from vault
@@ -30,7 +30,7 @@ resources:
     icon: database
     source:
       bucket: ((s3-bucket-2)) # get credentials from credentials-file
-      regexp: (.*).txt
+      regexp: ((filename-2))-(.*).txt
       access_key_id: ((s3-access-key)) # get credentials from vault
       secret_access_key: ((s3-access-secret)) # get credentials from vault
       endpoint: ((s3-endpoint)) # get credentials from vault
