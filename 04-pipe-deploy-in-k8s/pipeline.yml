@@ -1,0 +1,61 @@
+---
+resource_types:
+#  - name: slack-notification
+#    type: docker-image
+#    source:
+#      repository: cfcommunity/slack-notification-resource
+
+  - name: concourse-kubectl-resource-type
+    type: docker-image
+    source: 
+      repository: jmkarthik/concourse-kubectl-resource
+      tag: latest
+
+resources:
+  - name: concourse-kubectl-resource
+    type: concourse-kubectl-resource-type
+    source:
+      api_server_uri: ((server))
+      namespace: ((namespace))
+      certificate_authority_data: ((cad))
+      token: ((token))
+
+  - name: resource-tutorial
+    type: git
+    icon: github
+    source:
+      uri: ((github-resource-tutorial)) # get credentials from credentials-file
+      branch: ((branch-resource-tutorial)) # get credentials from credentials-file
+
+  #- name: resource-s3-file-1
+  #  type: s3
+  #  icon: database
+  #  source:
+  #    bucket: ((s3-bucket-1))  # get credentials from credentials-file
+  #    regexp: ((filename-1))-(.*).txt
+  #    access_key_id: ((s3-access-key)) # get credentials from vault
+  #    secret_access_key: ((s3-access-secret)) # get credentials from vault
+  #    endpoint: ((s3-endpoint)) # get credentials from vault
+  #    disable_ssl: true
+  #    use_v4: true
+  
+  #- name: image-resource
+  #  type: docker-image
+  #  icon: docker
+  #  source: {repository: ((image-resource))} # get credentials from credentials-file
+
+#  - name: notify
+#    type: slack-notification
+#    icon: message-alert
+#    source:
+#      url: ((slack-webhook)) # get credentials from vault
+
+jobs:
+  - name: deploy-nginx
+    public: true
+    serial: true
+    plan:
+    - get: resource-tutorial
+    - put: concourse-kubectl-resource
+      params:
+        file: resource-tutorial/k8s-files/nginx.yaml
